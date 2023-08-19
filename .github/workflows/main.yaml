@@ -35,5 +35,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: wimappdevacr.azurecr.io/fastapi_todo:${{ github.sha }}
+        tags: wimappdevacr.azurecr.io/streamlit:${{ github.sha }}
         file: Dockerfile
+
+# works ok
