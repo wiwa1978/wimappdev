@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: wimacr.azurecr.io/streamlit:${{ github.sha }}
+        tags: wimappdevacr.azurecr.io/streamlit:${{ github.sha }}
         file: Dockerfile
 
     - name: 'Deploy to Azure Container Instances'
@@ -38,7 +38,7 @@ jobs:
       with:
         resource-group: RG_AppDev
         dns-name-label: streamlitwim
-        image: wimacr.azurecr.io/streamlit:${{ github.sha }}
+        image: wimappdevacr.azurecr.io/streamlit:${{ github.sha }}
         cpu: 1
         memory: 1
         registry-username: ${{ secrets.REGISTRY_USERNAME }}
