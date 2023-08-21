@@ -6,7 +6,8 @@ on:
       - main
 
 jobs:
-  build:
+  deploy_to_azure_container_app:
+    name: 'Deploy to Azure Container Apps'
     runs-on: ubuntu-latest
 
     steps:
