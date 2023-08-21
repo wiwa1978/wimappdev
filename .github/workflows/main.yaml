@@ -15,14 +15,14 @@ jobs:
       - name: Log in to Azure
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_SERVICE_PRINCIPAL }}
 
       - name: Build and deploy Container App
         uses: azure/container-apps-deploy-action@v1
         with:
           appSourcePath: ${{ github.workspace }}
           acrName: wimappdevacr
-          containerAppName: streamlit-containerapp-wim
+          containerAppName: streamlit-containerapp-test
           resourceGroup: RG_AppDev
           targetPort: 8501
           location: westeurope
