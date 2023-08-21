@@ -23,7 +23,7 @@ jobs:
         with:
           imageToDeploy: wimappdevacr.azurecr.io/streamlit:1.0.0
           acrName: wimappdevacr 
-          containerAppName: streamlit-containerapp
+          containerAppName: streamlit-containerapp-wim
           resourceGroup: RG_AppDev
           targetPort: 8501
           location: westeurope
