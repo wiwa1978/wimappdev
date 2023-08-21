@@ -6,7 +6,8 @@ on:
       - main
 
 jobs:
-  build:
+  deploy_to_azure_container_app:
+    name: 'Deploy to Azure Container Apps'
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +23,7 @@ jobs:
         with:
           imageToDeploy: wimappdevacr.azurecr.io/streamlit:1.0.0
           acrName: wimappdevacr 
-          containerAppName: streamlitaca
+          containerAppName: streamlit-containerapp
           resourceGroup: RG_AppDev
           targetPort: 8501
           location: westeurope
