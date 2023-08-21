@@ -11,7 +11,7 @@ from langchain.callbacks.base import BaseCallbackHandler
 import os
 from pathlib import Path
 
-st.set_page_config(page_title="Chat with Documents", page_icon="🦜")
+st.set_page_config(page_title="Chat with your Documents", page_icon="🦜")
 st.title("🦜 Chat with Documents")
 
 
