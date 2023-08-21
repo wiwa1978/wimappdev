@@ -22,7 +22,7 @@ jobs:
         with:
           appSourcePath: ${{ github.workspace }}
           acrName: wimappdevacr
-          containerAppName: streamlit-containerapp-test
+          containerAppName: streamlit-containerapp
           resourceGroup: RG_AppDev
           targetPort: 8501
           location: westeurope
