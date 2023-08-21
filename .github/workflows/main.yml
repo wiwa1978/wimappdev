@@ -1,0 +1,43 @@
+name: Azure Container Apps Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_to_azure_container_app:
+    name: 'Deploy to Azure Container Apps'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_SERVICE_PRINCIPAL }}
+
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+     
+      - name: Build the image and push it to ACR
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: wimappdevacr.azurecr.io/streamlit:${{ github.sha }}
+          file: Dockerfile
+    
+      - name: Build and deploy Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          imageToDeploy: wimappdevacr.azurecr.io/streamlit:${{ github.sha }}
+          acrName: wimappdevacr
+          containerAppName: streamlit-containerapp-wim
+          resourceGroup: RG_AppDev
+          targetPort: 8501
+          location: westeurope
