@@ -12,7 +12,7 @@ import os
 from pathlib import Path
 
 st.set_page_config(page_title="Chat with your Documents", page_icon="🦜")
-st.title("🦜 Chat with your Documents")
+st.title("🦜 Chat with your Documents!!!")
 
 
 def get_pdf_text(pdf_docs):
