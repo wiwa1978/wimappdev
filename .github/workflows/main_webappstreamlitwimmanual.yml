@@ -61,3 +61,4 @@ jobs:
           app-name: 'webappstreamlitwimmanual'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DAE31C75629646B6B697F10F892A022E }}
+# test
