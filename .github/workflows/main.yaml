@@ -35,6 +35,6 @@ jobs:
       - name: Build and deploy Azure App Service
         uses: azure/webapps-deploy@v2
         with:
-            app-name: 'streamlit-wim-app'
+            app-name: 'webappstreamlitwim'
             publish-profile: ${{ secrets.azureWebAppPublishProfile }}
             images: 'wimappdevacr.azurecr.io/streamlit:${{ github.sha }}'
