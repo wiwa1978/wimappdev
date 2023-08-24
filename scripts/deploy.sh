@@ -1,0 +1,3 @@
+az containerapp env create --name streamlitapp --resource-group "RG_AppDev" --location "westeurope" 
+az containerapp create --name streamlit-containerapp  --resource-group "RG_AppDev" --environment streamlitapp --image wimappdevacr.azurecr.io/$1 --target-port 8000 --ingress 'external'  --registry-server wimappdevacr.azurecr.io --query properties.configuration.ingress.fqdn
+az containerapp registry set --name streamlit-containerapp-wim --resource-group "RG_AppDev" --server wimappdevacr.azurecr.io --identity system

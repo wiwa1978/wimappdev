@@ -1,4 +1,4 @@
-name: Azure Container Apps Deploy
+name: Azure App services - Container
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy_to_azure_container_app:
-    name: 'Deploy to Azure Container Apps'
+    name: 'Deploy to Azure App Service - Container'
     runs-on: ubuntu-latest
 
     steps:
@@ -31,9 +31,10 @@ jobs:
           push: true
           tags: wimappdevacr.azurecr.io/streamlit:${{ github.sha }}
           file: Dockerfile
-
-      - name: Run script file
-        run: |
-          chmod +x ./scripts/deploy.sh
-          ./scripts/deploy.sh ${{ github.sha }}
-        shell: bash
+    
+      - name: Build and deploy Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+            app-name: 'webappstreamlitwim'
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+            images: 'wimappdevacr.azurecr.io/streamlit:${{ github.sha }}'
